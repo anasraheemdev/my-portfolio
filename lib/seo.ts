@@ -58,6 +58,11 @@ export const siteConfig = {
   ],
 } as const;
 
+/** Google Search Console — HTML tag method (public token). Override via env if needed. */
+const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() ||
+  "Zy8gYdzGTDGJ0wonvT43GPtMl1lC5-jxvxJBoKJUvX8";
+
 export function getSiteMetadata(overrides?: Partial<Metadata>): Metadata {
   const ogTitle = siteConfig.title;
   const ogDescription = siteConfig.description;
@@ -120,10 +125,7 @@ export function getSiteMetadata(overrides?: Partial<Metadata>): Metadata {
       },
     },
     verification: {
-      // Add when you have them: google: "...", yandex: "..."
-      ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-        ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-        : {}),
+      google: GOOGLE_SITE_VERIFICATION,
     },
     other: {
       "geo.region": "PK-IS",
