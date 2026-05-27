@@ -2,9 +2,28 @@
 
 Personal portfolio site (Next.js 14 + Tailwind), adapted from the open-source **Pitch Black Swiss** template. It highlights AI and full-stack work, selected projects, experience, and skills.
 
-## Live site
+## Live site & SEO
 
-Deploy to your host (for example Vercel) and update the project URL in your README or environment as needed.
+Set your production URL in `.env.local`:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://anasraheem.dev
+```
+
+After deploy, these URLs work automatically:
+
+- `https://your-domain.com/sitemap.xml` — sitemap for Google/Bing
+- `https://your-domain.com/robots.txt` — crawl rules (blocks `/api/`)
+
+**To improve rankings (you control this off-site):**
+
+1. [Google Search Console](https://search.google.com/search-console) — add property, submit sitemap URL  
+2. Match `NEXT_PUBLIC_SITE_URL` to the exact domain you verify (with or without `www`, consistently)  
+3. Add `public/og.png` (1200×630) for rich link previews — optional but recommended  
+4. Keep LinkedIn/GitHub bios linking to the same URL  
+5. Publish case studies or dev posts that link back to the portfolio  
+
+Technical SEO in the repo: meta tags, Open Graph, Twitter cards, JSON-LD (`Person`, `WebSite`, `ProfilePage`), canonical URL, `manifest.json`, semantic headings, and crawlable single-page content.
 
 ## Contact
 

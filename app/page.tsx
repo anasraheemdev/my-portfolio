@@ -7,6 +7,7 @@ import { SkillsSection } from "@/components/sections/skills-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { CurtainRevealLayout } from "@/components/curtain-reveal-layout";
 import { KineticMarquee } from "@/components/ui/kinetic-marquee";
+import { siteConfig } from "@/lib/seo";
 
 export default function Home() {
   const navItems = [
@@ -17,8 +18,7 @@ export default function Home() {
   ];
 
   return (
-    <>
-      {/* Floating Navigation */}
+    <article aria-label={`${siteConfig.name} — portfolio`}>
       <FloatingNav navItems={navItems} />
 
       <CurtainRevealLayout footer={<FooterSection />}>
@@ -55,6 +55,6 @@ export default function Home() {
         {/* Skills & Services - Bento Grid */}
         <SkillsSection />
       </CurtainRevealLayout>
-    </>
+    </article>
   );
 }

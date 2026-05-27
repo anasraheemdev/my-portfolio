@@ -159,7 +159,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section
+      className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black"
+      aria-labelledby="hero-heading"
+    >
       {/* Noisy grid background */}
       <NoiseGridBackground />
       
@@ -200,9 +203,15 @@ export function HeroSection() {
             AI & Full-Stack Developer
           </p>
 
-          {/* Main headline */}
-          <h1
+          <h1 id="hero-heading" className="sr-only">
+            Muhammad Anas Raheem — AI and Full-Stack Developer in Islamabad,
+            Pakistan
+          </h1>
+
+          {/* Display headline */}
+          <h2
             className="font-harmond text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-bold tracking-tight leading-[0.85] text-white"
+            aria-hidden="true"
             style={{
               opacity: mounted ? 1 : 0,
               transform: mounted ? 'translateY(0)' : 'translateY(30px)',
@@ -211,7 +220,7 @@ export function HeroSection() {
             }}
           >
             CRAFTING
-          </h1>
+          </h2>
 
           {/* Flip words line */}
           <div

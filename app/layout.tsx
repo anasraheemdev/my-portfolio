@@ -5,8 +5,9 @@ import { NoiseOverlay } from "@/components/noise-overlay";
 import { CustomCursor } from "@/components/custom-cursor";
 import { LenisProvider } from "@/components/lenis-provider";
 import { PortfolioChatbot } from "@/components/portfolio-chatbot";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getSiteMetadata } from "@/lib/seo";
 
-// Harmond - Display font (fallback: Playfair Display)
 const harmond = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -15,7 +16,6 @@ const harmond = Playfair_Display({
   preload: true,
 });
 
-// Nohemi - Body font (fallback: Inter)
 const nohemi = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -24,36 +24,13 @@ const nohemi = Inter({
   preload: true,
 });
 
-export const metadata: Metadata = {
-  title: "Muhammad Anas Raheem | AI & Full-Stack Developer",
-  description:
-    "Highly driven AI professional specializing in full-stack development, agentic AI systems, AI automation, and intelligent solution design.",
-  keywords: [
-    "Muhammad Anas Raheem",
-    "AI Developer",
-    "Full Stack Developer",
-    "Agentic AI",
-    "AI Automation",
-    "Business Intelligence",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Python",
-    "Portfolio",
-  ],
-  authors: [{ name: "Muhammad Anas Raheem" }],
-  openGraph: {
-    title: "Muhammad Anas Raheem | AI & Full-Stack Developer",
-    description:
-      "AI professional specializing in full-stack development, agentic AI systems, and AI automation.",
-    type: "website",
-  },
-};
+export const metadata: Metadata = getSiteMetadata();
 
 export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -68,15 +45,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-black text-white font-nohemi antialiased overflow-x-hidden">
+        <JsonLd />
         <LenisProvider>
-          {/* Noise overlay - Film grain effect */}
           <NoiseOverlay />
-          
-          {/* Custom cursor - Desktop only */}
           <CustomCursor />
-          
-          {/* Main content */}
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <PortfolioChatbot />
         </LenisProvider>
       </body>
